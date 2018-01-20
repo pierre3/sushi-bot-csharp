@@ -36,7 +36,7 @@ namespace SushiBotCSharp
                 var luisSubscriptionKey = System.Configuration.ConfigurationManager.AppSettings["LuisSubscriptionKey"];
 
                 var talkContext = await TaklContext.CreateAsync(connectionString);
-                talkContext.RegisterTalkSkill(new SushiBotTalkSkill());
+                talkContext.RegisterTalkSkill(new SushiDeliveryTalkSkill());
 
                 using (var luis = new LuisClient(luisAppId, luisSubscriptionKey))
                 {

@@ -4,9 +4,9 @@ using System.Collections.ObjectModel;
 
 namespace SushiBotCSharp
 {
-    public class SushiBotTalkSkill : TalkSkill
+    public class SushiDeliveryTalkSkill : TalkSkill
     {
-        public SushiBotTalkSkill()
+        public SushiDeliveryTalkSkill()
         {
             Name = "出前注文";
             var requierdParams = new Dictionary<string, TalkParameter>()
@@ -78,22 +78,7 @@ namespace SushiBotCSharp
                      }
                 )
             };
-
-            var optionalParameters = new Dictionary<string, TalkParameter>()
-            {
-                ["option"] = new TalkParameter(messageToConfirm: null,
-                    reaction: (replyMessage, status) =>
-                    {
-                        if (status.Parameters.TryGetValue("option", out string option) && !string.IsNullOrEmpty(option))
-                        {
-                            replyMessage.Add(new TextMessage($"「{option}」ね！了解！"));
-                            return TalkReactionResult.Resolve;
-                        }
-                        return TalkReactionResult.Reject;
-                    })
-
-            };
-
+            
             RequierdParameters = new ReadOnlyDictionary<string, TalkParameter>(requierdParams);
         }
 
